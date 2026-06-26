@@ -11,38 +11,43 @@ Inicializar o projeto com Vite + TypeScript + Vanilla e criar a estrutura de arq
 
 **O que fazer:**
 - Criar o projeto com `npm create vite@latest` usando o template `vanilla-ts`.
-- Criar os arquivos vazios: `src/types.ts`, `src/openmeteo.ts`, `src/weather-codes.ts`, `src/ui.ts`.
+- Criar a estrutura de pastas e arquivos vazios conforme o PRD (seção 3):
+  - `src/services/openmeteo.ts`
+  - `src/types/index.ts`
+  - `src/utils/weather-codes.ts`
+  - `src/utils/wind-direction.ts`
+  - `src/ui.ts`
 - Limpar o conteúdo padrão gerado pelo Vite em `main.ts`, `style.css` e `index.html`.
 - Garantir que o projeto roda sem erros com `npm run dev`.
 
 **Critério de aprovação:**
 - [x] O comando `npm run dev` abre o projeto no navegador sem erros no terminal nem no console.
-- [x] Os 5 arquivos (`main.ts`, `types.ts`, `openmeteo.ts`, `weather-codes.ts`, `ui.ts`) existem dentro de `src/`.
+- [x] A estrutura de pastas `src/services/`, `src/types/` e `src/utils/` existe com os arquivos corretos.
 - [x] `index.html` não tem conteúdo padrão do Vite (sem contadores, logos ou textos de exemplo).
 
 ---
 
-## TASK 02 — Tipos TypeScript (`types.ts`)
+## TASK 02 — Tipos TypeScript (`src/types/index.ts`)
 
 Definir todas as interfaces do projeto conforme a seção **8. Tipos TypeScript** do PRD.
 
 **O que fazer:**
-- Implementar as interfaces `LocationData`, `WeatherUnits`, `WeatherCurrent`, `WeatherData` e `WeatherInfo` exatamente como especificadas no PRD.
+- Implementar as interfaces `LocationData`, `WeatherUnits`, `WeatherCurrent`, `WeatherData` e `WeatherInfo` em `src/types/index.ts`, exatamente como especificadas no PRD.
 - Exportar todas elas.
 
 **Critério de aprovação:**
-- [ ] O arquivo compila sem erros de TypeScript (`tsc --noEmit`).
-- [ ] Cada interface tem todos os campos listados no PRD, com os tipos corretos (incluindo `is_day: 0 | 1`).
-- [ ] Todas as interfaces estão exportadas.
+- [x] O arquivo compila sem erros de TypeScript (`tsc --noEmit`).
+- [x] Cada interface tem todos os campos listados no PRD, com os tipos corretos (incluindo `is_day: 0 | 1`).
+- [x] Todas as interfaces estão exportadas.
 
 ---
 
-## TASK 03 — Weather Codes (`weather-codes.ts`)
+## TASK 03 — Weather Codes (`src/utils/weather-codes.ts`)
 
 Implementar a função de mapeamento de códigos WMO para emoji e descrição, conforme a seção **6. Mapeamento de Weather Codes** do PRD.
 
 **O que fazer:**
-- Implementar e exportar `getWeatherInfo(code: number): WeatherInfo`.
+- Implementar e exportar `getWeatherInfo(code: number): WeatherInfo` em `src/utils/weather-codes.ts`.
 - Cobrir todos os grupos de códigos listados no PRD.
 - Retornar `{ emoji: '🌡️', description: 'Unknown' }` para códigos não mapeados.
 
@@ -51,17 +56,17 @@ Implementar a função de mapeamento de códigos WMO para emoji e descrição, c
 - [ ] `getWeatherInfo(2)` retorna `{ emoji: '⛅', description: 'Partly cloudy' }`.
 - [ ] `getWeatherInfo(95)` retorna `{ emoji: '⛈️', description: 'Thunderstorm' }`.
 - [ ] `getWeatherInfo(999)` retorna `{ emoji: '🌡️', description: 'Unknown' }`.
-- [ ] O arquivo usa o tipo `WeatherInfo` importado de `types.ts`.
+- [ ] O arquivo usa o tipo `WeatherInfo` importado de `src/types/index.ts`.
 - [ ] O arquivo compila sem erros de TypeScript.
 
 ---
 
-## TASK 04 — Camada de serviço: `getLocation` (`openmeteo.ts`)
+## TASK 04 — Camada de serviço: `getLocation` (`src/services/openmeteo.ts`)
 
 Implementar a função `getLocation` conforme a seção **5. Camada de Serviço** do PRD.
 
 **O que fazer:**
-- Implementar e exportar `getLocation(cityName: string): Promise<LocationData | null>`.
+- Implementar e exportar `getLocation(cityName: string): Promise<LocationData | null>` em `src/services/openmeteo.ts`.
 - Consultar o endpoint de Geocoding da Open-Meteo.
 - Extrair apenas os campos necessários: `name`, `latitude`, `longitude`, `country_code`, `timezone`.
 - Seguir as regras de guarda: retornar `null` se `cityName` estiver vazio ou se `results` vier vazio.
@@ -70,17 +75,17 @@ Implementar a função `getLocation` conforme a seção **5. Camada de Serviço*
 - [ ] `getLocation('')` retorna `null` sem fazer nenhuma requisição de rede.
 - [ ] `getLocation('London')` retorna um objeto com os campos `name`, `latitude`, `longitude`, `country_code` e `timezone` corretamente preenchidos.
 - [ ] `getLocation('xyzabcnotacity123')` retorna `null`.
-- [ ] O retorno usa o tipo `LocationData` importado de `types.ts`.
+- [ ] O retorno usa o tipo `LocationData` importado de `src/types/index.ts`.
 - [ ] O arquivo compila sem erros de TypeScript.
 
 ---
 
-## TASK 05 — Camada de serviço: `getWeather` (`openmeteo.ts`)
+## TASK 05 — Camada de serviço: `getWeather` (`src/services/openmeteo.ts`)
 
 Implementar a função `getWeather` conforme a seção **5. Camada de Serviço** do PRD.
 
 **O que fazer:**
-- Implementar e exportar `getWeather(latitude: number, longitude: number, timezone: string): Promise<WeatherData | null>`.
+- Implementar e exportar `getWeather(latitude: number, longitude: number, timezone: string): Promise<WeatherData | null>` em `src/services/openmeteo.ts`.
 - Consultar o endpoint de Forecast da Open-Meteo com todos os campos obrigatórios listados no PRD.
 - Mapear `current_units` para `units` e `current` para `current` no retorno.
 - Seguir as regras de guarda: retornar `null` se qualquer parâmetro estiver ausente ou se a resposta não tiver `current`/`current_units`.
@@ -89,7 +94,7 @@ Implementar a função `getWeather` conforme a seção **5. Camada de Serviço**
 - [ ] `getWeather(undefined, -48, 'America/Sao_Paulo')` retorna `null` sem fazer requisição.
 - [ ] `getWeather(-15.8, -48.1, 'America/Sao_Paulo')` retorna um objeto com `units` e `current`, contendo todos os campos obrigatórios listados no PRD.
 - [ ] Os campos de `units` refletem os valores reais retornados pela API (ex: `temperature_2m` = `"°C"`).
-- [ ] O retorno usa o tipo `WeatherData` importado de `types.ts`.
+- [ ] O retorno usa o tipo `WeatherData` importado de `src/types/index.ts`.
 - [ ] O arquivo compila sem erros de TypeScript.
 
 ---
@@ -144,7 +149,7 @@ Implementar a função que recebe os dados de localização e clima e os exibe n
 - Em `ui.ts`, implementar e exportar `renderWeather(location: LocationData, weather: WeatherData)`.
 - **Sidebar:** exibir temperatura, nome da cidade + country code, data atual do dispositivo, dia/noite (`is_day`), e weather code (emoji + descrição via `getWeatherInfo`).
 - **Área principal:** exibir umidade relativa, temperatura aparente, probabilidade de precipitação e vento.
-- **Vento:** converter `wind_direction_10m` (graus) para direção cardinal (N, NE, E, SE, S, SW, W, NW) e exibir junto com a velocidade. Ver regra em **9. Regras de Negócio Adicionais** do PRD.
+- **Vento:** usar a função utilitária `getWindDirection` de `src/utils/wind-direction.ts` para converter `wind_direction_10m` (graus) para direção cardinal (N, NE, E, SE, S, SW, W, NW) e exibir junto com a velocidade. Ver regra em **9. Regras de Negócio Adicionais** do PRD.
 - **Unidades:** usar os valores de `weather.units`, não hardcodar strings.
 - **Data:** usar a data local do dispositivo do usuário, formatada como `Wednesday, Jun 24`.
 
