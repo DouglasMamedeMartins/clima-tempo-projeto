@@ -199,9 +199,9 @@ Verificar que todos os requisitos do PRD estão atendidos, corrigir inconsistên
 - Garantir que `npm run build` conclui sem erros.
 
 **Critério de aprovação:**
-- [ ] `npm run build` e `tsc --noEmit` concluem sem erros ou warnings.
-- [ ] Ao abrir a aplicação pela primeira vez, o Empty State inicial é exibido.
-- [ ] Todos os fluxos das Tasks 09 funcionam corretamente no build de produção (`npm run preview`).
-- [ ] O layout está visualmente consistente com a seção **7** do PRD (fundo escuro, card branco, sidebar + área principal).
-- [ ] Não há `console.log` de debug esquecido no código.
-- [ ] Não há erros nem warnings no console do navegador durante uso normal.
+- [x] `npm run build` e `tsc --noEmit` concluem sem erros ou warnings.
+- [x] Ao abrir a aplicação pela primeira vez, o Empty State inicial é exibido.
+- [x] Todos os fluxos das Tasks 09 funcionam corretamente no build de produção (`npm run preview`).
+- [x] O layout está visualmente consistente com a seção **7** do PRD (fundo escuro, card branco, sidebar + área principal).
+- [x] Não há `console.log` de debug esquecido no código.
+- [x] Não há erros nem warnings no console do navegador durante uso normal.
