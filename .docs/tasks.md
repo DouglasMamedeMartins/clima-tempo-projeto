@@ -154,12 +154,12 @@ Implementar a função que recebe os dados de localização e clima e os exibe n
 - **Data:** usar a data local do dispositivo do usuário, formatada como `Wednesday, Jun 24`.
 
 **Critério de aprovação:**
-- [ ] Após chamar `renderWeather(locationMock, weatherMock)`, o sidebar exibe temperatura, cidade/país, data formatada, dia/noite e weather code com emoji.
-- [ ] `is_day = 1` exibe `☀️ Day`; `is_day = 0` exibe `🌙 Night`.
-- [ ] A área principal exibe os 4 itens: umidade, sensação térmica, precipitação e vento.
-- [ ] O vento exibe velocidade + direção cardinal (ex: `8.1 km/h NW`).
-- [ ] As unidades vêm de `weather.units` (ex: se a API retornar `"°F"`, a UI exibe `"°F"`).
-- [ ] Não há erros no console.
+- [x] Após chamar `renderWeather(locationMock, weatherMock)`, o sidebar exibe temperatura, cidade/país, data formatada, dia/noite e weather code com emoji.
+- [x] `is_day = 1` exibe `☀️ Day`; `is_day = 0` exibe `🌙 Night`.
+- [x] A área principal exibe os 4 itens: umidade, sensação térmica, precipitação e vento.
+- [x] O vento exibe velocidade + direção cardinal (ex: `8.1 km/h NW`).
+- [x] As unidades vêm de `weather.units` (ex: se a API retornar `"°F"`, a UI exibe `"°F"`).
+- [x] Não há erros no console.
 
 ---
 

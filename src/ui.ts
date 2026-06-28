@@ -1,16 +1,38 @@
+import type { LocationData, WeatherData } from './types/index'
+import { getWeatherInfo } from './utils/weather-codes'
+import { getWindDirection } from './utils/wind-direction'
+
 // ─── Element references ──────────────────────────────────
-const contentArea  = document.getElementById('content-area')  as HTMLElement
-const emptyState   = document.getElementById('empty-state')   as HTMLElement
-const weatherCard  = document.getElementById('weather-card')  as HTMLElement
+const contentArea  = document.getElementById('content-area')   as HTMLElement
+const emptyState   = document.getElementById('empty-state')    as HTMLElement
+const weatherCard  = document.getElementById('weather-card')   as HTMLElement
+
+// Sidebar
+const sidebarTemp        = document.getElementById('sidebar-temp')         as HTMLElement
+const sidebarLocation    = document.getElementById('sidebar-location')     as HTMLElement
+const sidebarDate        = document.getElementById('sidebar-date')         as HTMLElement
+const sidebarDaynight    = document.getElementById('sidebar-daynight')     as HTMLElement
+const sidebarWeatherCode = document.getElementById('sidebar-weather-code') as HTMLElement
+
+// Main area
+const infoHumidity     = document.getElementById('info-humidity')     as HTMLElement
+const infoFeelsLike    = document.getElementById('info-feels-like')   as HTMLElement
+const infoPrecipitation= document.getElementById('info-precipitation')as HTMLElement
+const infoWind         = document.getElementById('info-wind')         as HTMLElement
 
 // ─── Helpers ─────────────────────────────────────────────
 function clearDynamicStates(): void {
-  // Remove loading state if present
   const existing = document.getElementById('loading-state')
   if (existing) existing.remove()
-
-  // Hide weather card
   weatherCard.hidden = true
+}
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    weekday: 'long',
+    month:   'short',
+    day:     'numeric',
+  })
 }
 
 // ─── showEmptyState ───────────────────────────────────────
@@ -23,14 +45,13 @@ const DEFAULT_EMPTY = {
 const ERROR_EMPTY = {
   icon:     '🔍',
   title:    'No results found',
-  subtitle: 'We couldn\'t find that city. Check the spelling and try again.',
+  subtitle: "We couldn't find that city. Check the spelling and try again.",
 }
 
 export function showEmptyState(message?: string): void {
   clearDynamicStates()
 
-  const isError = message !== undefined
-
+  const isError  = message !== undefined
   const icon     = emptyState.querySelector('.empty-icon')     as HTMLElement
   const title    = emptyState.querySelector('.empty-title')    as HTMLElement
   const subtitle = emptyState.querySelector('.empty-subtitle') as HTMLElement
@@ -70,4 +91,37 @@ export function showLoading(): void {
 export function hideLoading(): void {
   const loader = document.getElementById('loading-state')
   if (loader) loader.remove()
+}
+
+// ─── renderWeather ────────────────────────────────────────
+export function renderWeather(location: LocationData, weather: WeatherData): void {
+  hideLoading()
+  emptyState.hidden = true
+
+  const { current, units } = weather
+  const { name, country_code } = location
+  const weatherInfo = getWeatherInfo(current.weather_code)
+
+  // ── Sidebar ──
+  sidebarTemp.textContent        = `${current.temperature_2m}${units.temperature_2m}`
+  sidebarLocation.textContent    = `${name}, ${country_code}`
+  sidebarDate.textContent        = formatDate(new Date())
+  sidebarDaynight.textContent    = current.is_day === 1 ? '☀️ Day' : '🌙 Night'
+  sidebarWeatherCode.textContent = `${weatherInfo.emoji} ${weatherInfo.description}`
+
+  // ── Main area ──
+  infoHumidity.querySelector('.info-value')!.textContent =
+    `${current.relative_humidity_2m}${units.relative_humidity_2m}`
+
+  infoFeelsLike.querySelector('.info-value')!.textContent =
+    `${current.apparent_temperature}${units.apparent_temperature}`
+
+  infoPrecipitation.querySelector('.info-value')!.textContent =
+    `${current.precipitation_probability}${units.precipitation_probability}`
+
+  const windDir = getWindDirection(current.wind_direction_10m)
+  infoWind.querySelector('.info-value')!.textContent =
+    `${current.wind_speed_10m} ${units.wind_speed_10m} ${windDir}`
+
+  weatherCard.hidden = false
 }
