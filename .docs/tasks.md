@@ -112,12 +112,12 @@ Criar a estrutura HTML e os estilos globais do projeto conforme a seção **7. L
 - O conteúdo do sidebar e da área principal pode ser placeholder estático por enquanto.
 
 **Critério de aprovação:**
-- [ ] A página exibe o fundo escuro corretamente.
-- [ ] O card principal tem fundo branco, bordas arredondadas e está centralizado.
-- [ ] A área de busca está acima do card, centralizada, sem background.
-- [ ] O sidebar está à esquerda e a área principal à direita dentro do card.
-- [ ] O layout não quebra em viewport de 800px de largura ou maior.
-- [ ] Não há erros no console.
+- [x] A página exibe o fundo escuro corretamente.
+- [x] O card principal tem fundo branco, bordas arredondadas e está centralizado.
+- [x] A área de busca está acima do card, centralizada, sem background.
+- [x] O sidebar está à esquerda e a área principal à direita dentro do card.
+- [x] O layout não quebra em viewport de 800px de largura ou maior.
+- [x] Não há erros no console.
 
 ---
 

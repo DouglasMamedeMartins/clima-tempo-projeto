@@ -1,9 +1,304 @@
+/* ─── Reset & Base ─────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+:root {
+  --bg-page:        #0f172a;
+  --bg-sidebar:     #1e3a5f;
+  --bg-sidebar-end: #1a5276;
+  --bg-card:        #ffffff;
+  --accent:         #38bdf8;
+  --accent-dark:    #0284c7;
+  --text-sidebar:   #ffffff;
+  --text-primary:   #0f172a;
+  --text-secondary: #64748b;
+  --text-muted:     #94a3b8;
+  --border:         #e2e8f0;
+  --info-bg:        #f8fafc;
+  --info-hover:     #f1f5f9;
+  --radius-card:    24px;
+  --radius-inner:   16px;
+  --radius-input:   50px;
+  --shadow-card:    0 24px 60px rgba(0, 0, 0, 0.35);
+  --font:           'Inter', system-ui, sans-serif;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: var(--font);
+  background-color: var(--bg-page);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* ─── App wrapper ───────────────────────────────────────── */
+.app {
+  width: 100%;
+  max-width: 860px;
+  padding: 48px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* ─── Search Area ───────────────────────────────────────── */
+.search-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-input);
+  padding: 6px 6px 6px 20px;
+  gap: 8px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.search-box:focus-within {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 400;
+  color: #ffffff;
+  caret-color: var(--accent);
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: var(--bg-page);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.search-btn:hover {
+  background: var(--accent-dark);
+  transform: scale(1.05);
+}
+
+.search-btn:active {
+  transform: scale(0.97);
+}
+
+/* ─── Content Area ──────────────────────────────────────── */
+.content-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ─── Empty State ───────────────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 64px 32px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 56px;
+  line-height: 1;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.3));
+}
+
+.empty-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.empty-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 280px;
+  line-height: 1.6;
+}
+
+/* ─── Weather Card ──────────────────────────────────────── */
+.weather-card {
+  width: 100%;
+  max-width: 800px;
+  background: var(--bg-card);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  min-height: 320px;
+}
+
+/* ─── Sidebar ───────────────────────────────────────────── */
+.sidebar {
+  width: 38%;
+  flex-shrink: 0;
+  background: linear-gradient(160deg, var(--bg-sidebar) 0%, var(--bg-sidebar-end) 100%);
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--text-sidebar);
+  position: relative;
+  overflow: hidden;
+}
+
+/* decorative circle */
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.08);
+  pointer-events: none;
+}
+
+.sidebar-temp {
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.sidebar-location {
+  font-size: 17px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: -0.01em;
+}
+
+.sidebar-date {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 8px;
+}
+
+.sidebar-daynight {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.sidebar-weather-code {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ─── Main Area ─────────────────────────────────────────── */
+.main-area {
+  flex: 1;
+  padding: 36px 28px;
+  display: flex;
+  align-items: center;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+.info-card {
+  background: var(--info-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-inner);
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: background 0.15s;
+}
+
+.info-card:hover {
+  background: var(--info-hover);
+}
+
+.info-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.info-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.info-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* ─── Loading State ─────────────────────────────────────── */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 64px 32px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.45);
 }

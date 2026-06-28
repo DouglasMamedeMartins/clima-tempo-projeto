@@ -3,10 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projeto Clima</title>
+    <title>Clima</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
+    <div class="app">
+
+      <!-- Área Superior: campo de busca -->
+      <header class="search-area">
+        <div class="search-box">
+          <input
+            type="text"
+            class="search-input"
+            id="search-input"
+            placeholder="Search for a city..."
+            autocomplete="off"
+          />
+          <button class="search-btn" id="search-btn" aria-label="Search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Área de conteúdo: card principal -->
+      <main class="content-area" id="content-area">
+
+        <!-- Empty State (estado inicial) -->
+        <div class="empty-state" id="empty-state">
+          <div class="empty-icon">🌤️</div>
+          <p class="empty-title">Search for a city</p>
+          <p class="empty-subtitle">Type a city name above to see the current weather.</p>
+        </div>
+
+        <!-- Weather Card (oculto até ter dados) -->
+        <div class="weather-card" id="weather-card" hidden>
+          <aside class="sidebar" id="sidebar">
+            <div class="sidebar-temp" id="sidebar-temp">--</div>
+            <div class="sidebar-location" id="sidebar-location">--</div>
+            <div class="sidebar-date" id="sidebar-date">--</div>
+            <div class="sidebar-daynight" id="sidebar-daynight">--</div>
+            <div class="sidebar-weather-code" id="sidebar-weather-code">--</div>
+          </aside>
+
+          <section class="main-area" id="main-area">
+            <div class="info-grid">
+              <div class="info-card" id="info-humidity">
+                <span class="info-icon">💧</span>
+                <span class="info-label">Humidity</span>
+                <span class="info-value">--</span>
+              </div>
+              <div class="info-card" id="info-feels-like">
+                <span class="info-icon">🌡️</span>
+                <span class="info-label">Feels like</span>
+                <span class="info-value">--</span>
+              </div>
+              <div class="info-card" id="info-precipitation">
+                <span class="info-icon">🌧️</span>
+                <span class="info-label">Precipitation</span>
+                <span class="info-value">--</span>
+              </div>
+              <div class="info-card" id="info-wind">
+                <span class="info-icon">💨</span>
+                <span class="info-label">Wind</span>
+                <span class="info-value">--</span>
+              </div>
+            </div>
+          </section>
+        </div>
+
+      </main>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
