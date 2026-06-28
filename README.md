@@ -2,7 +2,7 @@
 
 Aplicação web de consulta de clima em tempo real. Digite o nome de uma cidade e veja instantaneamente temperatura, umidade, sensação térmica, vento e probabilidade de chuva — sem precisar de conta ou chave de API.
 
-🔗 **[Ver projeto ao vivo](https://douglasmadedemartins.github.io/clima-tempo-projeto/)**
+🔗 **[Ver projeto ao vivo](https://douglasmamedemartins.github.io/clima-tempo-projeto/)**
 
 ---
 
@@ -14,7 +14,7 @@ Aplicação web de consulta de clima em tempo real. Digite o nome de uma cidade 
 - 🌧️ Probabilidade de precipitação
 - 💨 Velocidade e direção do vento (N, NE, E, SE, S, SW, W, NW)
 - ☀️ / 🌙 Indicação de dia ou noite
-- 🌤️ Descrição do clima com emoji (ex: *Mainly clear*, *Thunderstorm*)
+- 🌤️ Descrição do clima com emoji (ex: _Mainly clear_, _Thunderstorm_)
 - 📱 Layout responsivo — funciona em mobile, tablet e desktop
 - ⚡ Empty State e Loading State para boa experiência de usuário
 
@@ -22,13 +22,13 @@ Aplicação web de consulta de clima em tempo real. Digite o nome de uma cidade 
 
 ## 🛠️ Stack
 
-| Item | Tecnologia |
-|---|---|
-| Bundler | [Vite](https://vitejs.dev/) |
-| Linguagem | TypeScript |
-| Framework | Vanilla (sem framework de UI) |
-| API | [Open-Meteo](https://open-meteo.com/) — gratuita, sem chave |
-| Deploy | GitHub Pages via GitHub Actions |
+| Item      | Tecnologia                                                  |
+| --------- | ----------------------------------------------------------- |
+| Bundler   | [Vite](https://vitejs.dev/)                                 |
+| Linguagem | TypeScript                                                  |
+| Framework | Vanilla (sem framework de UI)                               |
+| API       | [Open-Meteo](https://open-meteo.com/) — gratuita, sem chave |
+| Deploy    | GitHub Pages via GitHub Actions                             |
 
 ---
 
@@ -117,10 +117,10 @@ O `main.ts` apenas orquestra — nunca acessa a API diretamente nem manipula o D
 
 [Open-Meteo](https://open-meteo.com/) — gratuita, open source, sem necessidade de cadastro ou chave de API.
 
-| Endpoint | Uso |
-|---|---|
+| Endpoint                                 | Uso                                                      |
+| ---------------------------------------- | -------------------------------------------------------- |
 | `geocoding-api.open-meteo.com/v1/search` | Busca latitude, longitude e timezone pelo nome da cidade |
-| `api.open-meteo.com/v1/forecast` | Busca dados climáticos atuais pela localização |
+| `api.open-meteo.com/v1/forecast`         | Busca dados climáticos atuais pela localização           |
 
 ---
 
