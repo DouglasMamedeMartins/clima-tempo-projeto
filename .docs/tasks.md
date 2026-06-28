@@ -91,11 +91,11 @@ Implementar a função `getWeather` conforme a seção **5. Camada de Serviço**
 - Seguir as regras de guarda: retornar `null` se qualquer parâmetro estiver ausente ou se a resposta não tiver `current`/`current_units`.
 
 **Critério de aprovação:**
-- [ ] `getWeather(undefined, -48, 'America/Sao_Paulo')` retorna `null` sem fazer requisição.
-- [ ] `getWeather(-15.8, -48.1, 'America/Sao_Paulo')` retorna um objeto com `units` e `current`, contendo todos os campos obrigatórios listados no PRD.
-- [ ] Os campos de `units` refletem os valores reais retornados pela API (ex: `temperature_2m` = `"°C"`).
-- [ ] O retorno usa o tipo `WeatherData` importado de `src/types/index.ts`.
-- [ ] O arquivo compila sem erros de TypeScript.
+- [x] `getWeather(undefined, -48, 'America/Sao_Paulo')` retorna `null` sem fazer requisição.
+- [x] `getWeather(-15.8, -48.1, 'America/Sao_Paulo')` retorna um objeto com `units` e `current`, contendo todos os campos obrigatórios listados no PRD.
+- [x] Os campos de `units` refletem os valores reais retornados pela API (ex: `temperature_2m` = `"°C"`).
+- [x] O retorno usa o tipo `WeatherData` importado de `src/types/index.ts`.
+- [x] O arquivo compila sem erros de TypeScript.
 
 ---
 
