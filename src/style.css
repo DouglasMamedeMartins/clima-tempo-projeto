@@ -302,3 +302,12 @@ body {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.45);
 }
+
+/* ─── Empty State error variant ────────────────────────── */
+.empty-state--error .empty-icon {
+  filter: drop-shadow(0 4px 12px rgba(248, 113, 113, 0.35));
+}
+
+.empty-state--error .empty-title {
+  color: #fca5a5;
+}

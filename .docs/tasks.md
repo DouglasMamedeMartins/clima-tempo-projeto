@@ -133,11 +133,11 @@ Implementar as funções de UI para os estados de vazio e carregamento, conforme
 - Aplicar os estilos correspondentes em `style.css`.
 
 **Critério de aprovação:**
-- [ ] Ao chamar `showEmptyState()` sem argumento, a área do card exibe uma mensagem amigável pedindo para buscar uma cidade.
-- [ ] Ao chamar `showEmptyState('City not found')`, a área exibe a mensagem de erro diferenciada.
-- [ ] Ao chamar `showLoading()`, o spinner ou skeleton aparece visivelmente no lugar do card.
-- [ ] O Empty State é exibido por padrão ao abrir a aplicação (estado inicial).
-- [ ] Não há erros no console.
+- [x] Ao chamar `showEmptyState()` sem argumento, a área do card exibe uma mensagem amigável pedindo para buscar uma cidade.
+- [x] Ao chamar `showEmptyState('City not found')`, a área exibe a mensagem de erro diferenciada.
+- [x] Ao chamar `showLoading()`, o spinner ou skeleton aparece visivelmente no lugar do card.
+- [x] O Empty State é exibido por padrão ao abrir a aplicação (estado inicial).
+- [x] Não há erros no console.
 
 ---
 
