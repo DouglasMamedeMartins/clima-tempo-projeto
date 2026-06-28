@@ -52,12 +52,12 @@ Implementar a função de mapeamento de códigos WMO para emoji e descrição, c
 - Retornar `{ emoji: '🌡️', description: 'Unknown' }` para códigos não mapeados.
 
 **Critério de aprovação:**
-- [ ] `getWeatherInfo(0)` retorna `{ emoji: '☀️', description: 'Clear sky' }`.
-- [ ] `getWeatherInfo(2)` retorna `{ emoji: '⛅', description: 'Partly cloudy' }`.
-- [ ] `getWeatherInfo(95)` retorna `{ emoji: '⛈️', description: 'Thunderstorm' }`.
-- [ ] `getWeatherInfo(999)` retorna `{ emoji: '🌡️', description: 'Unknown' }`.
-- [ ] O arquivo usa o tipo `WeatherInfo` importado de `src/types/index.ts`.
-- [ ] O arquivo compila sem erros de TypeScript.
+- [x] `getWeatherInfo(0)` retorna `{ emoji: '☀️', description: 'Clear sky' }`.
+- [x] `getWeatherInfo(2)` retorna `{ emoji: '⛅', description: 'Partly cloudy' }`.
+- [x] `getWeatherInfo(95)` retorna `{ emoji: '⛈️', description: 'Thunderstorm' }`.
+- [x] `getWeatherInfo(999)` retorna `{ emoji: '🌡️', description: 'Unknown' }`.
+- [x] O arquivo usa o tipo `WeatherInfo` importado de `src/types/index.ts`.
+- [x] O arquivo compila sem erros de TypeScript.
 
 ---
 
@@ -72,11 +72,11 @@ Implementar a função `getLocation` conforme a seção **5. Camada de Serviço*
 - Seguir as regras de guarda: retornar `null` se `cityName` estiver vazio ou se `results` vier vazio.
 
 **Critério de aprovação:**
-- [ ] `getLocation('')` retorna `null` sem fazer nenhuma requisição de rede.
-- [ ] `getLocation('London')` retorna um objeto com os campos `name`, `latitude`, `longitude`, `country_code` e `timezone` corretamente preenchidos.
-- [ ] `getLocation('xyzabcnotacity123')` retorna `null`.
-- [ ] O retorno usa o tipo `LocationData` importado de `src/types/index.ts`.
-- [ ] O arquivo compila sem erros de TypeScript.
+- [x] `getLocation('')` retorna `null` sem fazer nenhuma requisição de rede.
+- [x] `getLocation('London')` retorna um objeto com os campos `name`, `latitude`, `longitude`, `country_code` e `timezone` corretamente preenchidos.
+- [x] `getLocation('xyzabcnotacity123')` retorna `null`.
+- [x] O retorno usa o tipo `LocationData` importado de `src/types/index.ts`.
+- [x] O arquivo compila sem erros de TypeScript.
 
 ---
 
