@@ -179,12 +179,12 @@ Conectar busca, serviço e UI no entry point, implementando o fluxo completo des
 - O `main.ts` não deve importar nada de `openmeteo.ts` diretamente nas funções de render, nem importar nada de `ui.ts` nas funções de serviço.
 
 **Critério de aprovação:**
-- [ ] Buscar "London" exibe o resultado com todos os dados preenchidos no sidebar e área principal.
-- [ ] Buscar uma cidade inválida (ex: "xyzabcnotacity123") exibe o Empty State de erro.
-- [ ] O loading aparece enquanto a busca está em andamento e desaparece ao fim (com sucesso ou erro).
-- [ ] A busca funciona tanto ao pressionar Enter quanto ao clicar no botão.
-- [ ] Buscar com campo vazio não dispara requisição nem muda o estado da UI.
-- [ ] Não há erros no console durante nenhum dos fluxos acima.
+- [x] Buscar "London" exibe o resultado com todos os dados preenchidos no sidebar e área principal.
+- [x] Buscar uma cidade inválida (ex: "xyzabcnotacity123") exibe o Empty State de erro.
+- [x] O loading aparece enquanto a busca está em andamento e desaparece ao fim (com sucesso ou erro).
+- [x] A busca funciona tanto ao pressionar Enter quanto ao clicar no botão.
+- [x] Buscar com campo vazio não dispara requisição nem muda o estado da UI.
+- [x] Não há erros no console durante nenhum dos fluxos acima.
 
 ---
 

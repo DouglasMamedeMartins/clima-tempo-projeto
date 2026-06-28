@@ -174,6 +174,8 @@ body {
   color: var(--text-sidebar);
   position: relative;
   overflow: hidden;
+  /* FIX: prevent content from overflowing the sidebar width */
+  min-width: 0;
 }
 
 /* decorative circle */
@@ -189,13 +191,15 @@ body {
   pointer-events: none;
 }
 
+/* temperatura sempre visível por completo — clamp escala com o viewport */
 .sidebar-temp {
-  font-size: 72px;
+  font-size: clamp(32px, 5.5vw, 72px);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1;
   color: #ffffff;
   margin-bottom: 4px;
+  word-break: break-word;
 }
 
 .sidebar-location {
@@ -203,6 +207,9 @@ body {
   font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
   letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sidebar-date {
@@ -230,6 +237,8 @@ body {
   padding: 36px 28px;
   display: flex;
   align-items: center;
+  /* FIX: prevent overflow on narrow screens */
+  min-width: 0;
 }
 
 .info-grid {
@@ -248,6 +257,8 @@ body {
   flex-direction: column;
   gap: 6px;
   transition: background 0.15s;
+  /* FIX: allow card content to wrap instead of overflow */
+  min-width: 0;
 }
 
 .info-card:hover {
@@ -273,6 +284,8 @@ body {
   color: var(--text-primary);
   letter-spacing: -0.02em;
   line-height: 1.2;
+  /* FIX: allow value to wrap on very narrow cards */
+  word-break: break-word;
 }
 
 /* ─── Loading State ─────────────────────────────────────── */
@@ -310,4 +323,76 @@ body {
 
 .empty-state--error .empty-title {
   color: #fca5a5;
+}
+
+/* ─── Responsive: tablet (≤ 600px) ─────────────────────── */
+@media (max-width: 600px) {
+  .app {
+    padding: 32px 16px 48px;
+    gap: 24px;
+  }
+
+  /* Card vira coluna: sidebar em cima, main embaixo */
+  .weather-card {
+    flex-direction: column;
+    min-height: unset;
+    border-radius: 20px;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 28px 24px 24px;
+    /* sidebar no topo fica mais compacta */
+    gap: 6px;
+  }
+
+  .sidebar-temp {
+    /* em mobile temos a largura toda — clamp escala com o viewport */
+    font-size: clamp(40px, 14vw, 72px);
+  }
+
+  .main-area {
+    padding: 24px;
+    align-items: flex-start;
+  }
+
+  .info-grid {
+    gap: 12px;
+  }
+
+  .info-value {
+    font-size: 18px;
+  }
+}
+
+/* ─── Responsive: mobile pequeno (≤ 380px) ─────────────── */
+@media (max-width: 380px) {
+  .app {
+    padding: 24px 12px 40px;
+  }
+
+  .search-box {
+    padding: 5px 5px 5px 16px;
+  }
+
+  .sidebar {
+    padding: 24px 20px 20px;
+  }
+
+  .sidebar-temp {
+    font-size: clamp(32px, 13vw, 56px);
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .info-card {
+    padding: 16px 12px;
+  }
+
+  .info-value {
+    font-size: 16px;
+  }
 }
